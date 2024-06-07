@@ -1,0 +1,12 @@
+{
+    "Author": "Eidolon",
+    "Name": "Dynamic UI Scaling",
+    "Punchline": "Automatically finely scales the game UI by resolution.",
+    "Description": "Automatically finely scales the game UI by resolution.",
+    "ApplicableVersion": "any",
+    "IconURL": "https://raw.githubusercontent.com/HybridEidolon/eid-ffxiv-plugins/main/DynamicUIScaling/images/DynamicUIScaling.png",
+    "Tags": [
+        "plugin",
+        "ui"
+    ]
+}
