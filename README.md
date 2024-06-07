@@ -13,7 +13,7 @@ scale factor would bring the global UI scale below 100%.
 For World of Warcraft players, this behaves similarly to the UI scaling option
 there, except instead of a base resolution of 1024x768, it is 1280x720.
 
-Minitalk bubbles and chat log are not currently affected.
+Chat log is not currently affected.
 
 # License
 
