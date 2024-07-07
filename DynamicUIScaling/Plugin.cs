@@ -7,7 +7,7 @@ namespace DynamicUIScaling;
 
 public sealed class Plugin : IDalamudPlugin
 {
-    private DalamudPluginInterface PluginInterface { get; init; }
+    private IDalamudPluginInterface PluginInterface { get; init; }
     public IGameInteropProvider GameInteropProvider { get; init; }
     public IPluginLog PluginLog { get; init; }
     public IAddonLifecycle AddonLifecycle { get; init; }
@@ -22,12 +22,12 @@ public sealed class Plugin : IDalamudPlugin
     internal Funcs Funcs { get; init; }
 
     public Plugin(
-        [RequiredVersion("1.0")] DalamudPluginInterface pluginInterface,
-        [RequiredVersion("1.0")] IGameInteropProvider gameInteropProvider,
-        [RequiredVersion("1.0")] IPluginLog pluginLog,
-        [RequiredVersion("1.0")] IAddonLifecycle addonLifecycle,
-        [RequiredVersion("1.0")] IFramework framework,
-        [RequiredVersion("1.0")] IGameConfig gameConfig)
+        IDalamudPluginInterface pluginInterface,
+        IGameInteropProvider gameInteropProvider,
+        IPluginLog pluginLog,
+        IAddonLifecycle addonLifecycle,
+        IFramework framework,
+        IGameConfig gameConfig)
     {
         PluginInterface = pluginInterface;
         GameInteropProvider = gameInteropProvider;

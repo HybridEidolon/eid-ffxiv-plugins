@@ -14,9 +14,9 @@ public class Configuration : IPluginConfiguration
     public bool ScaleMinitalkBubbles { get; set; } = true;
 
     [NonSerialized]
-    private DalamudPluginInterface? pluginInterface;
+    private IDalamudPluginInterface? pluginInterface;
 
-    public void Initialize(DalamudPluginInterface pluginInterface)
+    public void Initialize(IDalamudPluginInterface pluginInterface)
     {
         this.pluginInterface = pluginInterface;
     }

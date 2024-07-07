@@ -17,18 +17,15 @@ internal sealed unsafe class Funcs : IDisposable {
     private delegate sbyte CheckHiResScaleDelegate(RaptureAtkUnitManager* unk, sbyte changingResolution);
     private Hook<CheckHiResScaleDelegate> checkHiResScaleHook;
 
-    [Signature("48 8B C4 53 56 41 54")]
+    [Signature("48 8B C4 53 55 41 54 41 57 48 83 EC 68 48 89 70 08 45 33 FF 4C 89 70 D8 48")]
     private readonly delegate* unmanaged<RaptureAtkUnitManager*, float, sbyte, sbyte> setGlobalUiScaleFactorNative = null!;
-
-    [Signature("E8 ?? ?? ?? ?? 48 89 03 48 89 B8")]
-    private readonly delegate* unmanaged<AtkResNode*, AtkComponentTextInput*> getAsAtkComponentTextInput = null!;
 
     internal Funcs(Plugin plugin)
     {
         Plugin = plugin;
 
         Plugin.GameInteropProvider.InitializeFromAttributes(this);
-        checkHiResScaleHook = Plugin.GameInteropProvider.HookFromSignature<CheckHiResScaleDelegate>("E8 ?? ?? ?? ?? E9 ?? ?? ?? ?? 48 8B 8F ?? ?? ?? ?? 41 8B 58", OnCheckHiResScale);
+        checkHiResScaleHook = Plugin.GameInteropProvider.HookFromSignature<CheckHiResScaleDelegate>("48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 83 EC 20 0F B6 EA 48 8B F1 ?? ?? ?? ?? ?? 32", OnCheckHiResScale);
         checkHiResScaleHook.Enable();
 
         OnCheckHiResScale(RaptureAtkUnitManager.Instance(), 0);
