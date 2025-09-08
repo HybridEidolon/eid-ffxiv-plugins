@@ -123,5 +123,28 @@ internal sealed unsafe class Funcs : IDisposable {
 
     public void Dispose()
     {
+        checkHiResScaleHook.Disable();
+        checkHiResScaleHook.Dispose();
+        uint hiscale = 0;
+        if (Plugin.GameConfig.System.TryGetUInt("UiHighScale", out hiscale))
+        {
+            float realscale = 1.0f;
+            switch (hiscale)
+            {
+                default:
+                    realscale = 1.0f;
+                    break;
+                case 1:
+                    realscale = 1.5f;
+                    break;
+                case 2:
+                    realscale = 2.0f;
+                    break;
+                case 3:
+                    realscale = 3.0f;
+                    break;
+            }
+            setGlobalUiScaleFactorNative(RaptureAtkUnitManager.Instance(), realscale, 1);
+        }
     }
 }
